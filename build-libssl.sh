@@ -31,7 +31,7 @@ DEFAULTVERSION="1.1.1g"
 #DEFAULTARCHS="ios_x86_64 ios_arm64 ios_armv7s ios_armv7 tv_x86_64 tv_arm64 mac_x86_64"
 #DEFAULTTARGETS="ios-sim-cross-x86_64 ios64-cross-arm64 ios-cross-armv7s ios-cross-armv7 tvos-sim-cross-x86_64 tvos64-cross-arm64 macos64-x86_64"
 DEFAULTARCHS="ios_x86_64 ios_arm64 tv_x86_64 tv_arm64 mac_x86_64 watchos_armv7k watchos_arm64_32 watchos_i386"
-DEFAULTTARGETS="ios-sim-cross-x86_64 ios64-cross-arm64 ios64-cross-arm64e tvos-sim-cross-x86_64 tvos64-cross-arm64 macos64-x86_64 watchos-cross-armv7k watchos-cross-arm64_32 watchos-sim-cross-i386"
+DEFAULTTARGETS="ios-sim-cross-x86_64 ios64-cross-arm64 ios64-cross-arm64e macos64-x86_64"
 
 # Minimum iOS/tvOS SDK version to build for
 IOS_MIN_SDK_VERSION="12.0"
@@ -533,15 +533,15 @@ fi
 #Build macOS library if selected for build
 if [ ${#LIBSSL_MACOS[@]} -gt 0 ]; then
   echo "Build library for macOS..."
-  lipo -create ${LIBSSL_MACOS[@]} -output "${CURRENTPATH}/lib/libssl-MacOSX.a"
-  lipo -create ${LIBCRYPTO_MACOS[@]} -output "${CURRENTPATH}/lib/libcrypto-MacOSX.a"
+  lipo -create ${LIBSSL_MACOS[@]} -output "${CURRENTPATH}/lib-macOS/libssl-macOS.a"
+  lipo -create ${LIBCRYPTO_MACOS[@]} -output "${CURRENTPATH}/lib-macOS/libcrypto-macOS.a"
 fi
 
 # Build iOS library if selected for build
 if [ ${#LIBSSL_IOS[@]} -gt 0 ]; then
   echo "Build library for iOS..."
-  lipo -create ${LIBSSL_IOS[@]} -output "${CURRENTPATH}/lib/libssl-iPhone.a"
-  lipo -create ${LIBCRYPTO_IOS[@]} -output "${CURRENTPATH}/lib/libcrypto-iPhone.a"
+  lipo -create ${LIBSSL_IOS[@]} -output "${CURRENTPATH}/lib-iOS/libssl-iOS.a"
+  lipo -create ${LIBCRYPTO_IOS[@]} -output "${CURRENTPATH}/lib-iOS/libcrypto-iOS.a"
 fi
 
 # Build tvOS library if selected for build
