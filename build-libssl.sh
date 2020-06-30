@@ -501,6 +501,12 @@ if [ "${CLEANUP}" == "true" ]; then
   if [ -d "${CURRENTPATH}/lib" ]; then
     rm -r "${CURRENTPATH}/lib"
   fi
+  if [ -d "${CURRENTPATH}/lib-macOS" ]; then
+    rm -r "${CURRENTPATH}/lib-macOS"
+  fi
+  if [ -d "${CURRENTPATH}/lib-iOS" ]; then
+    rm -r "${CURRENTPATH}/lib-iOS"
+  fi
   if [ -d "${CURRENTPATH}/src" ]; then
     rm -r "${CURRENTPATH}/src"
   fi
@@ -533,6 +539,7 @@ fi
 #Build macOS library if selected for build
 if [ ${#LIBSSL_MACOS[@]} -gt 0 ]; then
   echo "Build library for macOS..."
+	mkdir -p "${CURRENTPATH}/lib-macOS"
   lipo -create ${LIBSSL_MACOS[@]} -output "${CURRENTPATH}/lib-macOS/libssl-macOS.a"
   lipo -create ${LIBCRYPTO_MACOS[@]} -output "${CURRENTPATH}/lib-macOS/libcrypto-macOS.a"
 fi
@@ -540,6 +547,7 @@ fi
 # Build iOS library if selected for build
 if [ ${#LIBSSL_IOS[@]} -gt 0 ]; then
   echo "Build library for iOS..."
+	mkdir -p "${CURRENTPATH}/lib-iOS"
   lipo -create ${LIBSSL_IOS[@]} -output "${CURRENTPATH}/lib-iOS/libssl-iOS.a"
   lipo -create ${LIBCRYPTO_IOS[@]} -output "${CURRENTPATH}/lib-iOS/libcrypto-iOS.a"
 fi
