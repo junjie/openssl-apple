@@ -36,7 +36,7 @@ DEFAULTTARGETS="ios-sim-cross-x86_64 ios64-cross-arm64 ios64-cross-arm64e tvos-s
 # Minimum iOS/tvOS SDK version to build for
 IOS_MIN_SDK_VERSION="12.0"
 TVOS_MIN_SDK_VERSION="12.0"
-MACOS_MIN_SDK_VERSION="10.15"
+MACOS_MIN_SDK_VERSION="10.13"
 WATCHOS_MIN_SDK_VERSION="4.0"
 
 # Init optional env variables (use available variable or default to empty string)
