@@ -118,7 +118,11 @@ function build_libraries() {
         elif [[ $PLATFORM == AppleTV* ]]; then
             MIN_SDK="-tvos_version_min $TVOS_MIN_SDK_VERSION"
         elif [[ $PLATFORM == MacOSX* ]]; then
-            MIN_SDK="-macosx_version_min $MACOS_MIN_SDK_VERSION"
+            if [[ "$ARCH" == "arm64" ]]; then
+                MIN_SDK="-macosx_version_min 11.0"
+            else
+                MIN_SDK="-macosx_version_min $MACOS_MIN_SDK_VERSION"
+            fi
         elif [[ $PLATFORM == Catalyst* ]]; then
             MIN_SDK="-platform_version mac-catalyst 13.0 $CATALYST_MIN_SDK_VERSION"
         elif [[ $PLATFORM == iPhoneSimulator* ]]; then
