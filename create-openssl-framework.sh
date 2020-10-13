@@ -8,8 +8,7 @@ SCRIPTDIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 
 # System types we support. Note the matching directories in assets, and that these are
 # used as prefixes for many operations of this script.
-ALL_SYSTEMS=("iPhone" "AppleTV" "MacOSX" "Watch" "Catalyst")
-
+ALL_SYSTEMS=("iPhoneOS" "iPhoneSimulator" "AppleTVOS" "AppleTVSimulator" "MacOSX" "WatchOS" "WatchSimulator" "Catalyst")
 
 # Bring in libraries.
 source "${SCRIPTDIR}/scripts/lib-min-sdk-versions.sh"
