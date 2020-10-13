@@ -388,41 +388,6 @@ LIBCRYPTO_WATCHOS=()
 target_build_loop
 
 
-#Build macOS library if selected for build
-if [ ${#LIBSSL_MACOS[@]} -gt 0 ]; then
-  echo "Build library for macOS..."
-  lipo -create ${LIBSSL_MACOS[@]} -output "${CURRENTPATH}/lib/libssl-MacOSX.a"
-  lipo -create ${LIBCRYPTO_MACOS[@]} -output "${CURRENTPATH}/lib/libcrypto-MacOSX.a"
-fi
-
-#Build catalyst library if selected for build
-if [ ${#LIBSSL_CATALYST[@]} -gt 0 ]; then
-  echo "Build library for catalyst..."
-  lipo -create ${LIBSSL_CATALYST[@]} -output "${CURRENTPATH}/lib/libssl-Catalyst.a"
-  lipo -create ${LIBCRYPTO_CATALYST[@]} -output "${CURRENTPATH}/lib/libcrypto-Catalyst.a"
-fi
-
-# Build iOS library if selected for build
-if [ ${#LIBSSL_IOS[@]} -gt 0 ]; then
-  echo "Build library for iOS..."
-  lipo -create ${LIBSSL_IOS[@]} -output "${CURRENTPATH}/lib/libssl-iPhone.a"
-  lipo -create ${LIBCRYPTO_IOS[@]} -output "${CURRENTPATH}/lib/libcrypto-iPhone.a"
-fi
-
-# Build tvOS library if selected for build
-if [ ${#LIBSSL_TVOS[@]} -gt 0 ]; then
-  echo "Build library for tvOS..."
-  lipo -create ${LIBSSL_TVOS[@]} -output "${CURRENTPATH}/lib/libssl-AppleTV.a"
-  lipo -create ${LIBCRYPTO_TVOS[@]} -output "${CURRENTPATH}/lib/libcrypto-AppleTV.a"
-fi
-
-# Build tvOS library if selected for build
-if [ ${#LIBSSL_WATCHOS[@]} -gt 0 ]; then
-  echo "Build library for watchOS..."
-  lipo -create ${LIBSSL_WATCHOS[@]} -output "${CURRENTPATH}/lib/libssl-WatchOS.a"
-  lipo -create ${LIBCRYPTO_WATCHOS[@]} -output "${CURRENTPATH}/lib/libcrypto-WatchOS.a"
-fi
-
 # Copy include directory
 cp -R "${INCLUDE_DIR}" "${CURRENTPATH}/include/"
 
