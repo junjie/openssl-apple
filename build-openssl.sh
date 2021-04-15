@@ -413,6 +413,9 @@ if [ ${#OPENSSLCONF_ALL[@]} -gt 1 ]; then
       *_macos_x86_64.h)
         DEFINE_CONDITION="TARGET_OS_OSX && TARGET_CPU_X86_64"
       ;;
+      *_macos_arm64.h)
+        DEFINE_CONDITION="TARGET_OS_OSX && TARGET_CPU_ARM64"
+      ;;
       *_macos_i386.h)
         DEFINE_CONDITION="TARGET_OS_OSX && TARGET_CPU_X86"
       ;;
@@ -447,7 +450,11 @@ if [ ${#OPENSSLCONF_ALL[@]} -gt 1 ]; then
         DEFINE_CONDITION="TARGET_OS_SIMULATOR && TARGET_CPU_X86 || TARGET_OS_EMBEDDED"
       ;;
       *_catalyst_x86_64.h)
-        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64"      ;;
+        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64"
+      ;;
+      *_catalyst_arm64.h)
+        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_ARM64"
+      ;;
       *)
         # Don't run into unexpected cases by setting the default condition to false
         DEFINE_CONDITION="0"
